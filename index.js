@@ -21,7 +21,22 @@ $(document).ready(function() {
     //         console.log( data.status );
     //     });
     $('#source').submit(function(event) {
-            event.preventDefault();
-            alert(document.getElementById("selection").value)
+        event.preventDefault();
+        $.ajax({
+            method: "GET",
+            url: "https://newsapi.org/v2/top-headlines",
+            data: { sources: document.getElementById("selection").value, category: "business", country: "us", language: "en", apiKey: APIKEY},
+            success: function(event) {
+                if (event.status === "ok") {
+                    console.log(event)
+                    for (var i = 0; i < event.articles.length; i++) {
+                        var source = document.createElement("LI");
+                        source.setAttribute("value", event.articles[i].title);
+                        source.innerHTML = event.articles[i].title;
+                        document.getElementById('display').appendChild(source);
+                    }
+                }
+            }
         })
+    })
 })

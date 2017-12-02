@@ -30,13 +30,24 @@ $(document).ready(function() {
             success: function(event) {
                 if (event.status === "ok") {
                     console.log(event)
+                    
                     for (var i = 0; i < event.articles.length; i++) {
-                        var source = document.createElement("A");
-                        source.setAttribute("class", "col-xs-4");
-                        source.setAttribute("style", "height: 350px");
-                        source.setAttribute("href", event.articles[i].url);
-                        source.innerHTML = "<img src="+event.articles[i].urlToImage+" height= 100vh> </br> "+event.articles[i].title+" </br> "+event.articles[i].description+"";
-                        document.getElementById('display').appendChild(source);
+                        var colDiv = document.createElement("DIV");
+                        colDiv.setAttribute("class", "col-xs-4");
+                        colDiv.setAttribute("style", "height: 450px");
+                        
+                        var headLink = document.createElement("H4");
+                        var picLink = document.createElement("A");
+                        picLink.setAttribute("href", event.articles[i].url);
+                        picLink.innerHTML = "<img src="+event.articles[i].urlToImage+" height= 150vh> </br> "+event.articles[i].title+" </br>";
+                        headLink.appendChild(picLink);
+                        colDiv.appendChild(headLink);
+
+                        var descrip = document.createElement("P");
+                        descrip.innerHTML = event.articles[i].description;
+                        colDiv.appendChild(descrip);
+                        
+                        document.getElementById('display').appendChild(colDiv);
                     }
                 }
             }

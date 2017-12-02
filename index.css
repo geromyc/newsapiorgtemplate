@@ -1,0 +1,8 @@
+body {
+    font-family: Helvetica, "Century Gothic", Arial;
+}
+img {
+    border-radius: 10px;
+    border: solid;
+    border-color: red;
+}

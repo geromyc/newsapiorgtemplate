@@ -6,3 +6,6 @@ img {
     border: solid;
     border-color: red;
 }
+.form-group {
+    text-align: center;
+}

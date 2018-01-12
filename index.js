@@ -26,7 +26,7 @@ $(document).ready(function() {
         $.ajax({
             method: "GET",
             url: "https://newsapi.org/v2/top-headlines",
-            data: { sources: document.getElementById("selection").value, country: "us", language: "en", apiKey: APIKEY},
+            data: { sources: document.getElementById("selection").value, language: "en", apiKey: APIKEY},
             success: function(event) {
                 if (event.status === "ok") {
                     console.log(event)
